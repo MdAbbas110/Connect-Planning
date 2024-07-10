@@ -1,14 +1,13 @@
+import NavBar from ".//NavBar";
 import { createClient } from "@/prismicio";
-import NavBar from "./NavBar";
 
-const Header = async () => {
+export default async function Header() {
   const client = createClient();
   const settings = await client.getSingle("settings");
+
   return (
     <header>
       <NavBar settings={settings} />
     </header>
   );
-};
-
-export default Header;
+}
