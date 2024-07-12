@@ -6,6 +6,7 @@ const nextConfig = async () => {
   const repository = await clientRepo.getRepository();
   const locales = repository.languages.map((lang) => lang.id);
 
+  console.log(locales, repository);
   return {
     i18n: {
       locales,

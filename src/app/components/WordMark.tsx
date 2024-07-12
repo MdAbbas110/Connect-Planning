@@ -10,7 +10,7 @@ export default function WordMark() {
         clipRule="evenodd"
       />
 
-      <text x="43" y="25" font-family="Arial" font-size="20" fill="white">
+      <text x="43" y="25" fontFamily="Arial" fontSize="20" fill="white">
         Connect Planning
       </text>
     </svg>

@@ -29,3 +29,7 @@
     --rotation: 0deg;
   }
 }
+
+::selection {
+  color: #ffd057;
+}
