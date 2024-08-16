@@ -1,77 +1,3 @@
-// import { createClient } from "@/prismicio";
-// import { Content, isFilled } from "@prismicio/client";
-// import { PrismicNextLink } from "@prismicio/next";
-// import {
-//   PrismicRichText,
-//   PrismicText,
-//   SliceComponentProps,
-// } from "@prismicio/react";
-
-// /**
-//  * Props for `CaseStudies`.
-//  */
-// export type CaseStudiesProps = SliceComponentProps<Content.CaseStudiesSlice>;
-
-// /**
-//  * Component for "CaseStudies" Slices.
-//  */
-// const CaseStudies = async ({
-//   slice,
-// }: CaseStudiesProps): Promise<JSX.Element> => {
-//   const client = createClient();
-
-//   const caseStudies = await Promise.all(
-//     slice.primary.display.map(async (item) => {
-//       if (isFilled.contentRelationship(item.case_studies)) {
-//         return await client.getByID<Content.CaseStudyDocument>(
-//           item.case_study.id,
-//         );
-//       }
-//     }),
-//   );
-//   console.log("here is the," + caseStudies.data?.company);
-
-//   return (
-//     <section
-//       data-slice-type={slice.slice_type}
-//       data-slice-variation={slice.variation}
-//     >
-//       <PrismicRichText field={slice.primary.heading} />
-//       <PrismicRichText field={slice.primary.body} />
-
-//       <div className="mt-20 grid gap-16">
-//         {caseStudies.map(
-//           (caseStudy, index) =>
-//             caseStudy && (
-//               <div
-//                 key={caseStudy.id}
-//                 className="relative grid gap-4 opacity-85 transition-opacity duration-300 hover:cursor-pointer hover:opacity-100 md:grid-cols-2 md:gap-8 lg:grid-cols-2"
-//               >
-//                 <h3 className="text-4xl">
-//                   hwllo
-//                   <PrismicText field={caseStudy.data.company} />
-//                 </h3>
-//                 <div className="max-w-md">
-//                   <PrismicRichText field={caseStudy.data.description} />
-//                 </div>
-
-//                 <PrismicNextLink
-//                   document={caseStudy}
-//                   className="after:absolute after:inset-0 hover:underline"
-//                 >
-//                   Read <PrismicText field={caseStudy.data.company} /> case study
-//                 </PrismicNextLink>
-//               </div>
-//             ),
-//         )}
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default CaseStudies;
-
-// import Bounded from "@/components/Bounded";
 import Bounded from "@/app/components/Bounded";
 import { createClient } from "@/prismicio";
 import { Content, isFilled } from "@prismicio/client";
@@ -96,7 +22,7 @@ const CaseStudies = async ({
 }: CaseStudiesProps): Promise<JSX.Element> => {
   const client = createClient();
 
-  const newCase = await Promise.all(
+  const allCaseStudies = await Promise.all(
     slice.primary.display.map(async (item) => {
       if (isFilled.contentRelationship(item.case_study)) {
         return await client.getByID<Content.CaseStudyDocument>(
@@ -120,7 +46,7 @@ const CaseStudies = async ({
       </div>
 
       <div className="mt-20 grid gap-16">
-        {newCase.map(
+        {allCaseStudies.map(
           (caseStudy, index) =>
             caseStudy && (
               <div
@@ -144,6 +70,7 @@ const CaseStudies = async ({
                   </PrismicNextLink>
                 </div>
                 <PrismicNextImage
+                  alt=""
                   field={caseStudy.data.logo_image}
                   quality={100}
                   sizes="(max-width: 768px) 100vw, 50vw"
