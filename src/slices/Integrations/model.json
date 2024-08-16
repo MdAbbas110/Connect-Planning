@@ -1,0 +1,61 @@
+{
+  "id": "integrations",
+  "type": "SharedSlice",
+  "name": "Integrations",
+  "description": "Integrations",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading2"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "icons": {
+          "type": "Group",
+          "config": {
+            "label": "icons-group",
+            "repeat": true,
+            "fields": {
+              "icons": {
+                "type": "Select",
+                "config": {
+                  "label": "icons",
+                  "placeholder": "",
+                  "options": [
+                    "cloudflare",
+                    "npm",
+                    "github",
+                    "figma",
+                    "digitalocen",
+                    "fly"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
