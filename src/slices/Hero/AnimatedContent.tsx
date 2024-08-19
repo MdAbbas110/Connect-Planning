@@ -13,13 +13,23 @@ import {
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
 
 const AnimatedContent = ({ slice }: { slice: Content.HeroSlice }) => {
   const container = useRef(null);
+  const prefersReduceMotion = usePrefersReducedMotion();
   gsap.registerPlugin(useGSAP);
 
   useGSAP(
     () => {
+      if (prefersReduceMotion) {
+        gsap.set(
+          ".hero__heading, .hero__body, .hero__button, .hero__image, .hero__glow",
+          { opacity: 1 },
+        );
+        return;
+      }
+
       const tl = gsap.timeline({
         defaults: { ease: "power2.inOut" },
       });
