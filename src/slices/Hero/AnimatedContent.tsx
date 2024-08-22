@@ -85,18 +85,18 @@ const AnimatedContent = ({ slice }: { slice: Content.HeroSlice }) => {
         </div>
       )}
 
-      {/* <ButtonLink
+      <ButtonLink
         className="hero__button mt-8 opacity-0"
         field={slice.primary.button_link}
       >
         {slice.primary.button_label}
-      </ButtonLink> */}
+      </ButtonLink>
 
-      <ButtonPage
+      {/* <ButtonPage
         href="/book-call"
         className="hero__button mt-8 opacity-0"
         name="visit"
-      />
+      /> */}
 
       {isFilled.image(slice.primary.image) && (
         <div className="hero__image glass-container mt-16 w-fit opacity-0">
