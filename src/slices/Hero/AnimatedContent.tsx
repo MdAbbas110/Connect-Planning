@@ -14,6 +14,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
+import ButtonPage from "@/app/components/ButtonPage";
 
 const AnimatedContent = ({ slice }: { slice: Content.HeroSlice }) => {
   const container = useRef(null);
@@ -84,12 +85,18 @@ const AnimatedContent = ({ slice }: { slice: Content.HeroSlice }) => {
         </div>
       )}
 
-      <ButtonLink
+      {/* <ButtonLink
         className="hero__button mt-8 opacity-0"
         field={slice.primary.button_link}
       >
         {slice.primary.button_label}
-      </ButtonLink>
+      </ButtonLink> */}
+
+      <ButtonPage
+        href="/book-call"
+        className="hero__button mt-8 opacity-0"
+        name="visit"
+      />
 
       {isFilled.image(slice.primary.image) && (
         <div className="hero__image glass-container mt-16 w-fit opacity-0">
